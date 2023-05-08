@@ -1,5 +1,9 @@
 package entity.vanet;
 
+import com.example.blockchain.Block;
+import com.example.blockchain.BlockChain;
+import com.example.blockchain.Constants_Program;
+import com.example.blockchain.Miner;
 import globals.Resources;
 import globals.AttackerEnum;
 import remote.RemoteVehicleNetworkInterface;
@@ -29,14 +33,28 @@ public class VehicleApp {
 	 * - Wait loop
 	 */
 	public static void main(String[] args) {
+		BlockChain blockChain = new BlockChain();
+		Miner miner = new Miner();
+
+		Block block0 = new Block(0,"transaction1", Constants_Program.GENESIS_PREV_HASH);
+		miner.mine(block0, blockChain);
+		for (int i=1 ; i<11 ; i++){
+
+			vehicleMain(args,i,blockChain,miner);
+		}
+
+
+	}
+	public static void vehicleMain(String[] args,int vehicleNumber, BlockChain blockChain, Miner miner) {
+
 
 		System.out.println("\n");
 
 		// Vehicle creation arguments
 		Vector2D pos = null;
 		Vector2D vel = new Vector2D(1, 0);
-		String vin = "VIN1"; // TODO GENERATE ONE RANDOM MAYBE?
-		String simulated_certName = "vehicle1"; // TODO select a diferent for each one
+		String vin = "VIN" + vehicleNumber; // TODO GENERATE ONE RANDOM MAYBE?
+		String simulated_certName = "vehicle"+ vehicleNumber; // TODO select a diferent for each one
 		AttackerEnum attacker = AttackerEnum.NO_ATTACKER;
 
 		Vehicle vehicle;
@@ -89,7 +107,7 @@ public class VehicleApp {
 		} else {
 			closestWaypoint = DefaultMap.getInstance().getClosestWaypoint(pos);
 		}
-		vehicle = new Vehicle(vin, simulated_certName, closestWaypoint.getPosition(), closestWaypoint.getRandomAdjancie(), attacker);
+		vehicle = new Vehicle(vin, simulated_certName, closestWaypoint.getPosition(), closestWaypoint.getRandomAdjancie(), attacker, vehicleNumber);
 
 		System.out.println(Resources.OK_MSG("Started: " + vehicle));
 
@@ -106,6 +124,7 @@ public class VehicleApp {
 		try {
 			Registry registry = LocateRegistry.getRegistry(Resources.REGISTRY_PORT);
 			VANET = (RemoteVehicleNetworkInterface) registry.lookup(Resources.VANET_NAME);
+
 			// Get a unique name from the VANET
 			vehicleUniqueName = VANET.getNextVehicleName();
 		} catch(Exception e) {
@@ -116,6 +135,9 @@ public class VehicleApp {
 
 		// Publish remote vehicle
 		RemoteVehicleService remoteVehicle = new RemoteVehicleService(vehicle, vehicleUniqueName);
+
+		Block block1 = new Block(1,vehicleUniqueName,blockChain.getBlockChain().get(blockChain.size()-1).getHash());
+		miner.mine(block1, blockChain);
 		remoteVehicle.publish();
 
 		// Start the vehicle
@@ -134,7 +156,10 @@ public class VehicleApp {
 		}
 
 		// Handle wait and removal
+		if(vehicleNumber == 12){
 		try {
+			System.out.println("\n"+ "BLOCKCHAIN:\n"+blockChain);
+			System.out.println("Miner's reward: " + miner.getReward());
 			System.out.println("Press enter to kill the vehicle.");
 			System.in.read();
 			VANET.removeVehicle(vehicleUniqueName);
@@ -145,5 +170,7 @@ public class VehicleApp {
 			System.out.println("\n");
 			System.exit(0);
 		}
+
+	}
 	}
 }

@@ -49,14 +49,14 @@ public class RSU {
 
 		// Read certificate file to a certificate object
 		try {
-			this.myCert = (X509Certificate)Resources.readCertificateFile(certsDir+certificateName+".cer"); }
+			this.myCert = (X509Certificate)Resources.readCertificateFile("/home/hassan/IdeaProjects/Security_Attacks_VANET/rsu/cert/rsu/rsu.cer"); }
 		catch (Exception e) {
 			System.out.println(Resources.ERROR_MSG("Error Loading certificate: "+e.getMessage()));
 			System.out.println(Resources.ERROR_MSG("Exiting. RSU is useless without certificate"));
 			System.exit(1);
 		}
 		try {
-			this.myKeystore = Resources.readKeystoreFile(certsDir + certificateName + ".jks", Resources.STORE_PASS);
+			this.myKeystore = Resources.readKeystoreFile("/home/hassan/IdeaProjects/Security_Attacks_VANET/rsu/cert/rsu/rsu.jks", Resources.STORE_PASS);
 			this.myPrKey = Resources.getPrivateKeyFromKeystore(this.myKeystore, certificateName, Resources.KEY_PASS); }
 		catch (Exception e) {
 			System.out.println(Resources.ERROR_MSG("Error Loading PrivateKey: "+e.getMessage()));

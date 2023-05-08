@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/blockchain/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ca/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ca/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/rsu/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/rsu/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/vehicle-network/assets" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/vehicle-network/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/vehicle/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/vehicle/src/main/resources" charset="UTF-8" />
+  </component>
+</project>

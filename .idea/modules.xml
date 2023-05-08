@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/Security_Attacks_VANET.iml" filepath="$PROJECT_DIR$/.idea/Security_Attacks_VANET.iml" />
+      <module fileurl="file://$PROJECT_DIR$/blockchain/blockchain.iml" filepath="$PROJECT_DIR$/blockchain/blockchain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ca/ca.iml" filepath="$PROJECT_DIR$/ca/ca.iml" />
+      <module fileurl="file://$PROJECT_DIR$/remote-interfaces/remote-interfaces.iml" filepath="$PROJECT_DIR$/remote-interfaces/remote-interfaces.iml" />
+      <module fileurl="file://$PROJECT_DIR$/resources/resources.iml" filepath="$PROJECT_DIR$/resources/resources.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rsu/rsu.iml" filepath="$PROJECT_DIR$/rsu/rsu.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Blockchain/src/test/test1.iml" filepath="$PROJECT_DIR$/../Blockchain/src/test/test1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/vehicle/vehicle.iml" filepath="$PROJECT_DIR$/vehicle/vehicle.iml" />
+      <module fileurl="file://$PROJECT_DIR$/vehicle-network/vehicle-network.iml" filepath="$PROJECT_DIR$/vehicle-network/vehicle-network.iml" />
+    </modules>
+  </component>
+</project>

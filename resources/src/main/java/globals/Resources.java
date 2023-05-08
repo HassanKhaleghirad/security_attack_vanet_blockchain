@@ -60,7 +60,7 @@ public class Resources {
 
 //  ------- PATHS ------------
 	public static final String CA_REVOKED = "cert/revoked/";
-	public static final String CERT_DIR = "cert/";
+	public static final String CERT_DIR = "/cert/";
 	public static final String CA_PK = "cert/ca-certificate.pem.txt";
 	public static final String CA_CERT = "cert/ca-key.pem.txt";
 

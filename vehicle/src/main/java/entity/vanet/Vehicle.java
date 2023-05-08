@@ -92,7 +92,7 @@ public class Vehicle {
 
 //  ------- CONSTRUCTOR  ------------
 
-	public Vehicle(String VIN, String certificateName, Vector2D position, Waypoint nextWaypoint, AttackerEnum attackerType) {
+	public Vehicle(String VIN, String certificateName, Vector2D position, Waypoint nextWaypoint, AttackerEnum attackerType, int vehicleNumber) {
 		this.VIN = VIN;
 		this.position = position;
 		this.attackerType = attackerType;
@@ -101,7 +101,9 @@ public class Vehicle {
 		this.velocity = new Vector2D(0, 0);
 		updateVelocity();
 
-		String certsDir = Resources.CERT_DIR+certificateName+"/";
+		//String certsDir = Resources.CERT_DIR+certificateName+"/";
+		String certsDir = "/home/hassan/IdeaProjects/Security_Attacks_VANET/vehicle/cert/"+certificateName + "/";
+
 		// Read certificate file to a certificate object
 		try {
 			this.myCert = (X509Certificate)Resources.readCertificateFile(certsDir+certificateName+".cer"); }
@@ -112,7 +114,7 @@ public class Vehicle {
 		}
 
 		try {
-			this.myKeystore = Resources.readKeystoreFile(certsDir + certificateName + ".jks", Resources.STORE_PASS);
+			this.myKeystore = Resources.readKeystoreFile("/home/hassan/IdeaProjects/Security_Attacks_VANET/vehicle/cert/vehicle"+vehicleNumber+"/vehicle"+vehicleNumber+".jks", Resources.STORE_PASS);
 			this.myPrKey = Resources.getPrivateKeyFromKeystore(this.myKeystore, certificateName, Resources.KEY_PASS); }
 		catch (Exception e) {
 			System.out.println(Resources.ERROR_MSG("Error Loading PrivateKey: "+e.getMessage()));

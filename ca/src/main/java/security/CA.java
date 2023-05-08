@@ -2,6 +2,7 @@ package security;
 
 import globals.Resources;
 import java.rmi.registry.LocateRegistry;
+import java.security.cert.X509Certificate;
 
 public class CA {
     public static void main( String[] args ) {
@@ -14,7 +15,7 @@ public class CA {
         RemoteCAService CA = null;
         try {
             // FIXME... this certificate has a different format...
-            CA = new RemoteCAService(null/*(X509Certificate)Resources.readCertificateFile(Resources.CA_CERT)*/);
+            CA = new RemoteCAService((X509Certificate)Resources.readCertificateFile(Resources.CA_CERT));
         } catch (Exception e) {
             System.out.println(Resources.ERROR_MSG(e.getMessage()));
             System.exit(1);
